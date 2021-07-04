@@ -1,0 +1,33 @@
+<p>loginpage works!</p>
+<div class="row col-4 m-auto">
+
+    <form #loginPage="ngForm" (ngSubmit)="submitmyForm(loginPage)">
+
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="form-control"
+            id="exampleInputEmail1" ngModel #myname="ngModel" name="myname" required>
+        <div *ngIf="myname.touched && !myname.valid">
+            <p class="alert alert-danger">
+                invalid email
+            </p>
+        </div>
+        <div *ngIf="myname.errors?.pattern">
+            <p>This is not a valid Email!!!</p>
+        </div>
+
+        <label >Password</label>
+        <input type="password" class="form-control"  minlength="8" ngModel
+            #mypassword="ngModel" name="mypassword" required>
+        <div *ngIf="mypassword.touched && mypassword.errors?.required">
+            <p class="alert alert-danger"> password is required!!!</p>
+        </div>
+        <div *ngIf="mypassword.errors?.minlength">
+            <p class="alert alert-danger">
+                password must be 8 or more
+            </p>
+        </div>
+        <button class="btn btn-primary mt-2" type="submit">login</button>
+    </form>
+</div>
+
+

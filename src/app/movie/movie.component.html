@@ -1,0 +1,19 @@
+<p>movie works!</p>
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">{{moviename}} </h1>
+    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+    <button class="btn btn-success" (click)="changemoviename()">change movie </button>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-6 p-3" *ngFor="let item of items">
+    <!--  [src]= 'item.poster_path'-->
+    <a [routerLink]="['movie',item.id]"> 
+      <img src={{item.poster_path}} alt="">
+      <p class="pt-2 text-success">{{item.title}}</p>
+    </a>
+  </div>
+</div>
